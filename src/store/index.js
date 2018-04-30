@@ -1,19 +1,24 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { routerMiddleware, routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import createHistory from 'history/createBrowserHistory';
 
-import counter from './counter';
+import profile from './profile';
+import match from './match';
+import player from './player';
 
 export const history = createHistory();
 const rootReducer = combineReducers({
   router: routerReducer,
-  counter
+  profile,
+  player,
+  match
 });
 
 const initialState = {};
 const enhancers = [];
-const middleware = [thunk, routerMiddleware(history)];
+const middleware = [thunk, routerMiddleware(history), logger];
 
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__;
