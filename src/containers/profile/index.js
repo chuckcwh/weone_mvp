@@ -55,7 +55,11 @@ class Profile extends Component {
               ? profileWL.win / (profileWL.win + profileWL.lose)
               : 'N/A',
           rankings: profileRanking.length ? profileRanking : 'N/A',
-          steam: <a href={profile.profile.profileurl}>Link</a>
+          steam: (
+            <a href={profile.profile.profileurl} target="_blank">
+              Link
+            </a>
+          )
         }
       ];
 
